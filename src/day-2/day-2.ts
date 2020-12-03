@@ -38,12 +38,24 @@ export const isValidPassword = (data: PasswordData): boolean => {
   return charCount >= data.min && charCount <= data.max
 }
 
-export const howManyPasswordsAreValid = async (): Promise<number> => {
+export const isValidPasswordPart2 = (data: PasswordData): boolean => {
+  const isFirstValid = data.password[data.min - 1] === data.letter
+  const isSecondValid = data.password[data.max - 1] === data.letter
+  if (isFirstValid && !isSecondValid) {
+    return true
+  }
+  if (!isFirstValid && isSecondValid) {
+    return true
+  }
+  return false
+}
+
+export const howManyPasswordsAreValid = async (passwordChecker: (data: PasswordData) => boolean): Promise<number> => {
   const input = await readInput()
 
   let valid = 0
   for (const data of input) {
-    if (isValidPassword(data)) {
+    if (passwordChecker(data)) {
       valid++
     }
   }
