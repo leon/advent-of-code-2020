@@ -23,4 +23,18 @@ describe('day 3', () => {
     const count = checkHowManyTrees(map, 1, 3)
     expect(count).toBe(270)
   })
+
+  it('should check how many trees on way down part 2', () => {
+    const map = readMap()
+
+    const count1 = checkHowManyTrees(map, 1, 1)
+    const count2 = checkHowManyTrees(map, 1, 3)
+    const count3 = checkHowManyTrees(map, 1, 5)
+    const count4 = checkHowManyTrees(map, 1, 7)
+    const count5 = checkHowManyTrees(map, 2, 1)
+
+    const magicNumber = count1 * count2 * count3 * count4 * count5
+
+    expect(magicNumber).toBe(2122848000)
+  })
 })
