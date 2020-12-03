@@ -216,3 +216,16 @@ export const findSumOf2020 = (): [number, number] => {
   }
   return [0, 0]
 }
+
+export const findSumOf2020v2 = (): [number, number, number] => {
+  for (const i1 of input) {
+    for (const i2 of input) {
+      for (const i3 of input) {
+        if (i1 + i2 + i3 === 2020) {
+          return [i1, i2, i3]
+        }
+      }
+    }
+  }
+  return [0, 0, 0]
+}
